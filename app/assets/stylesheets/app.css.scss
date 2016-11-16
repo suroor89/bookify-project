@@ -1,0 +1,43 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import 'font-awesome';
+
+// miscellaneous
+hr {
+    border: 0;
+    border-top: .5px solid #eee;
+    border-bottom: .5px solid #eee;
+    margin: 1.5rem auto;
+}
+
+// typo
+h1 {
+    font-size: 3em;
+    letter-spacing: -2px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+body {
+    padding-top: 70px;
+    min-height: 500px;
+}
+
+.main {
+    min-height: 500px;
+}
+
+#logo {
+    font-size: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: bold;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+
+
+
