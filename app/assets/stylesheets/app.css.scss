@@ -2,13 +2,9 @@
 @import "bootstrap";
 @import 'font-awesome';
 
-// miscellaneous
-hr {
-    border: 0;
-    border-top: .5px solid #eee;
-    border-bottom: .5px solid #eee;
-    margin: 1.5rem auto;
-}
+// variables
+
+$form-error: #a94442;
 
 // typo
 h1 {
@@ -23,8 +19,25 @@ body {
     min-height: 500px;
 }
 
-.main {
-    min-height: 500px;
+.jumbotron h1 {
+    margin-bottom: 10px;
+}
+
+// Form
+
+#error_explanation {
+    color: $form-error;
+    ul {
+        margin-bottom: 30px;
+    }
+}
+
+.field_with_errors {
+    color: $form-error;
+    .form-control {
+        border-color: $form-error;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    }
 }
 
 #logo {
@@ -37,6 +50,26 @@ body {
         text-decoration: none;
     }
 }
+.main {
+    min-height: 500px;
+}
+//users list
+
+.users li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+// footer
+footer {
+    background-color: #eee;
+    margin-top: 100px;
+}
+footer .container {
+    padding: 50px 0;
+}
+
 
 
 
