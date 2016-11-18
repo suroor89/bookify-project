@@ -1,0 +1,33 @@
+<%= form_for([user, book]) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="form-group">
+    <%= f.label :title, class: 'control-label' %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :author, class: 'control-label' %>
+    <%= f.text_field :author, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "amazon Id", class: 'control-label' %>
+    <%= f.text_field :amazon_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description, class: 'control-label' %>
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :rating %>
+    <%= f.number_field :rating %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit btn_val, class: 'btn btn-primary' %>
+  </div>
+<% end %>
+

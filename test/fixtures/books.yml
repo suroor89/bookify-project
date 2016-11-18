@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  author: MyString
+  description: MyText
+  amazon_id: MyString
+  rating: 1
+  keywords: MyText
+
+two:
+  title: MyString
+  author: MyString
+  description: MyText
+  amazon_id: MyString
+  rating: 1
+  keywords: MyText

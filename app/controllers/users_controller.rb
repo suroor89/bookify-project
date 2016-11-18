@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @books = @user.books
   end
 
   def new
