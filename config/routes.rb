@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
+
   root 'static_pages#home'
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  delete '/logout' => 'sessions#destroy'
+
 
   get '/home' => 'static_pages#home'
   get '/app_architecture' => 'static_pages#app_architecture'
@@ -9,5 +15,6 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
 
   resources :users
+
 end
 
