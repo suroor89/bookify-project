@@ -5,7 +5,8 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = @user.books
+    @books = @user.books.includes(:categories).by_category(params[:filter]).search(params[:keyword]).paginate(page: params[:page], per_page: 5)
+    @categories = Category.categories_from_user(@user).distinct
   end
 
   # GET /books/1
@@ -16,6 +17,7 @@ class BooksController < ApplicationController
   # GET /books/new
   def new
     @book = @user.books.build
+    @categories = Category.all
   end
 
   # GET /books/1/edit
@@ -25,17 +27,13 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    @book = Book.new(book_params)
-    respond_to do |format|
+    @book = @user.books.build(book_params)
       if @book.save
-        format.html { redirect_to books_url, notice: 'Book was successfully created.' }
-        format.json { render :show, status: :created, location: @book }
-        format.js
+        flash[:success] = "Book was successfully created."
+        redirect_to user_books_path(@user)
       else
-        format.html { render :new }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
+        render 'new'
       end
-    end
   end
 
   # PATCH/PUT /books/1
@@ -74,6 +72,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:title, :author, :description, :amazon_id, :rating, genre_ids: [])
+      params.require(:book).permit(:title, :author, :description, :amazon_id, category_ids: [])
     end
 end

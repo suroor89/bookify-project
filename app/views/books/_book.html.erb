@@ -1,12 +1,11 @@
-<li class="row rating-<%= book.rating %>">
+<li class="row">
   <div class="col-sm-3">
     <a href="#">
       <%= img_from_amazon(book.amazon_id) %>
     </a>
-    <div class="text-center rating"><strong><%= book.rating %></strong>/5</div>
   </div>
 
-  <div class="col-sm-8">
+  <div class="col-sm-8 book-description">
     <h3>
       <%= link_to book.title, user_book_path(user, book) %>
     </h3>
@@ -15,6 +14,11 @@
       <p>
         <%= book.description %>
       </p>
+      <span>
+        <% book.categories.each do |category| %>
+          <%= link_to category.name, '#', class: 'label label-primary' %>
+        <% end %>
+      </span>
     </div>
   </div>
 </li>

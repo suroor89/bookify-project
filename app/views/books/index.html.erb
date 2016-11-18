@@ -1,17 +1,21 @@
 <header>
   <div class="jumbotron text-center hero">
-    <h2>Movie Search</h2>
+    <h2>Book Search</h2>
     <div class="container">
+
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="What movie?" autofocus>
-            <span class="input-group-btn">
-              <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search"></span></button>
-            </span>
-          </div>
+          <form>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="What are you looking for?" autofocus name="keyword" value="<%= params[:keyword] %>">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+              </span>
+            </div>
+          </form>
         </div>
       </div>
+
     </div>
   </div> <!-- end jumbotron -->
 </header>
@@ -24,6 +28,15 @@
   <div class="col-md-8">
     <ul class="list-unstyled book-list">
       <%= render @books, user: @user %>
+    </ul>
+    <%= will_paginate %>
+  </div>
+  <div class="col-md-4">
+    <h2>Categories</h2>
+    <ul class="list-unstyled">
+      <% @categories.each do |category| %>
+        <li><%= link_to category.name, user_books_path(@user, filter: category.name), class: 'label label-primary' %></li>
+      <% end %>
     </ul>
   </div>
 </div>
