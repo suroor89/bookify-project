@@ -1,6 +1,8 @@
 class BooksController < ApplicationController
   before_action :set_user
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :check_logged_in_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /books
   # GET /books.json
@@ -55,7 +57,7 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     respond_to do |format|
-      format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
+      format.html { redirect_to books_url, notice: 'Book was successfully deleted.' }
       format.json { head :no_content }
     end
   end

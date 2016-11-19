@@ -1,1 +1,18 @@
-<h1>Book</h1>
+<h2>Book Details</h2>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="book-content">
+      <%= img_from_amazon(@book.amazon_id) %>
+      <h3><%= @book.title %></h3>
+      <div class="book-description">
+        <p>
+          <span class="label label-info">Book description</span> <%= @book.description %>
+        </p>
+      </div>
+      <div class="book-labels">
+        <p><span class="label label-primary">Author</span> <%= @book.author %></p>
+      </div>
+    </div>
+  </div>
+</div>

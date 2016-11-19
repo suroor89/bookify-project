@@ -12,7 +12,7 @@ science = Category.create!(name: 'Science')
 
 
 user = User.create!(firstname: 'Quoc', lastname: 'Nguyen', email: 'quoc@example.com', password: 'password', password_confirmation: 'password')
-
+user2 = User.create!(firstname: 'Jay', lastname: 'Nguyen', email: 'jay@example.com', password: 'password', password_confirmation: 'password')
 
 user.books.create!([{
   title: "Hyperion",
