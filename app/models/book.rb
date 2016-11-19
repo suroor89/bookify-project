@@ -3,6 +3,8 @@ class Book < ApplicationRecord
   has_many :category_books, dependent: :destroy
   has_many :categories, through: :category_books
 
+  has_one :review, dependent: :destroy
+
   validates_presence_of :title, :author, :amazon_id, :description
 
   before_save :set_keywords

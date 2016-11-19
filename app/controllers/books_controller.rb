@@ -24,10 +24,9 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
+    @categories = Category.all
   end
 
-  # POST /books
-  # POST /books.json
   def create
     @book = @user.books.build(book_params)
       if @book.save
@@ -38,28 +37,19 @@ class BooksController < ApplicationController
       end
   end
 
-  # PATCH/PUT /books/1
-  # PATCH/PUT /books/1.json
   def update
-    respond_to do |format|
-      if @book.update(book_params)
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
-        format.json { render :show, status: :ok, location: @book }
-      else
-        format.html { render :edit }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
+    if @book.update(book_params)
+      flash[:success] = "Book was successfully updated."
+      redirect_to user_book_url([@user, @book])
+    else
+      render 'edit'
     end
   end
 
-  # DELETE /books/1
-  # DELETE /books/1.json
   def destroy
     @book.destroy
-    respond_to do |format|
-      format.html { redirect_to books_url, notice: 'Book was successfully deleted.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Book was successfully deleted."
+    redirect_to user_books_url(@user)
   end
 
   private

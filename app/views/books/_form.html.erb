@@ -6,7 +6,8 @@
     <% @categories.each do |category| %>
       <div class="checkbox-inline">
         <label>
-          <%= check_box_tag 'book[category_ids][]', category.id %><%= category.name %>
+          <%= check_box_tag 'book[category_ids][]', category.id, book.categories.include?(category) %>
+          <%= category.name %>
         </label>
       </div>
     <% end %>

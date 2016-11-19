@@ -11,7 +11,9 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_correct_user
-    flash[:info] = "Unauthorized access. You can only edit your own reading list."
-    redirect_to user_books_path(current_user) unless is_current_user?(@user)
+    unless is_current_user?(@user)
+      flash[:info] = "Unauthorized access. You can only edit your own reading list."
+      redirect_to user_books_path(current_user)
+    end
   end
 end

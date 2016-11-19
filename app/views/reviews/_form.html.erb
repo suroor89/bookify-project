@@ -1,0 +1,27 @@
+<%= form_for([book, review]) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="form-group">
+    <%= f.label :heading, "Review heading", class: 'control-label' %>
+    <%= f.text_field :heading, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :body, "Review", class: 'control-label' %>
+    <%= f.text_area :body, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" style="display:block;">Rating</label>
+    <% (1..5).each do |rating| %>
+        <label class="radio-inline">
+          <%= f.radio_button :rating, rating %><%= rating %>
+        </label>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit btn_val, class: 'btn btn-primary' %>
+  </div>
+<% end %>
+

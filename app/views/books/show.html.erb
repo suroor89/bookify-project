@@ -1,18 +1,64 @@
-<h2>Book Details</h2>
+<% provide(:title, "#{@book.title}") %>
 
-<div class="row">
+<div class="row mg-bo">
   <div class="col-md-8">
-    <div class="book-content">
-      <%= img_from_amazon(@book.amazon_id) %>
-      <h3><%= @book.title %></h3>
-      <div class="book-description">
-        <p>
-          <span class="label label-info">Book description</span> <%= @book.description %>
-        </p>
+    <h2 class="page-header">Book Details</h2>
+    <div class="media book-content">
+      <div class="media-left">
+        <%= img_from_amazon(@book.amazon_id) %>
       </div>
-      <div class="book-labels">
-        <p><span class="label label-primary">Author</span> <%= @book.author %></p>
+      <div class="media-body">
+        <h3 class="media-heading"><%= @book.title %></h3>
+        <div class="book-description">
+          <p>
+            <span class="label label-info">Book description</span> <%= @book.description %>
+          </p>
+        </div>
+        <div class="book-labels">
+          <p><span class="label label-primary">Author</span> <%= @book.author %></p>
+        </div>
       </div>
     </div>
   </div>
+
+  <div class="col-md-4">
+    <h2 class="page-header">Actions</h2>
+    <%= link_to "Edit book", [:edit, @user, @book], class: 'btn btn-warning' %>
+    <%= link_to "Delete Book", [@user, @book], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  </div>
 </div>
+
+
+<div class="row">
+  <div class="col-md-8">
+    <h2 class="page-header">Book Review</h2>
+    <% if @book.review.present? %>
+      <div>
+        <%= @book.user.firstname %> reviewed this book on <%= @book.review.created_at.to_s %>
+      </div>
+    <div class="media">
+      <div class="media-left">
+        <%= gravatar_for(@user, class: "media-object") %>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">
+          <% @book.review.rating.times do %>
+            <span class="gold-star">&#9733;</span>
+          <% end %>
+          <%= @book.review.heading %>
+        </h4>
+        <p>
+        <%= @book.review.body %>
+        </p>
+      </div>
+      <div class="rating">
+      </div>
+    </div>
+    <% else %>
+      The book has not been reviewed yet.
+      <%= link_to "New Review", new_book_review_path(@book) %>
+    <% end %>
+  </div>
+</div>
+
+
