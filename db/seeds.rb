@@ -15,10 +15,6 @@ non_fiction = Category.create!(name: 'Non-Fiction')
 user = User.create!(firstname: 'Quoc', lastname: 'Nguyen', email: 'quoc@example.com', password: 'password', password_confirmation: 'password')
 user2 = User.create!(firstname: 'Jay', lastname: 'Nguyen', email: 'jay@example.com', password: 'password', password_confirmation: 'password')
 
-10.times do |n|
-  firstname = Faker::Name.first_name
-  User.create!(firstname: firstname, lastname: Faker::Name.last_name, email: "#{firstname}@example.com", password: 'password', password_confirmation: 'password')
-end
 
 user.books.create!([{
   title: "Hyperion",
