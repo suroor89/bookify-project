@@ -9,7 +9,7 @@ fantasy = Category.create!(name: 'Fantasy')
 entertainment = Category.create!(name: 'Entertainment')
 politics = Category.create!(name: 'Politics')
 science = Category.create!(name: 'Science')
-non-fiction = Category.create!(name: 'Non-Fiction')
+non_fiction = Category.create!(name: 'Non-Fiction')
 
 
 user = User.create!(firstname: 'Quoc', lastname: 'Nguyen', email: 'quoc@example.com', password: 'password', password_confirmation: 'password')
