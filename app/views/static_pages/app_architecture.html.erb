@@ -1,2 +1,71 @@
-<h1>StaticPages#app_architecture</h1>
-<p>Find me in app/views/static_pages/app_architecture.html.erb</p>
+<h1>App Architecture</h1>
+
+<h2>Application's Components</h2>
+
+<p>
+  I built this web-based app using:
+  <ul>
+    <li><a href="http://getbootstrap.com">Bootstrap</a> for the frontend</li>
+    <li><a href="http://rubyonrails.org">Ruby on Rails</a> on the server side</li>
+    <li><a href="https://www.mysql.com">MySQL</a> for database</li>
+    <li><a href="https://www.heroku.com">Heroku</a> for cloud deployment</li>
+  </ul>
+</p>
+
+<h2>MVC Pattern</h2>
+
+<div class="mvc">
+  <%= image_tag('mvc.png', alt: "MVC Pattern", class: 'img-responsive center-block') %>
+</div>
+
+<p>
+Ruby on Rails framework, just like many other modern web frameworks, uses <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC pattern</a> to build web apps.
+</p>
+
+<p>The MVC pattern is popular because it promotes separation of concerns, which makes your apps modular, flexible, reusable and easy for testing.
+</p>
+
+<p>
+The View is what exposes to users and handles user's interaction.
+</p>
+
+<p>
+The Controller contains main business logic and sits between the View and the Model. It gets data from the Model and passes it to the View to send back to users.
+</p>
+
+<p>
+The Model is responsible for interaction with database. It acts like gatekeeper for the databaseas it handles validations. It provides interfaces to fetches data from database that users need or write new records to database.
+</p>
+
+<h2>E/R Diagram</h2>
+
+<div class="diagram">
+  <%= image_tag('db.png', alt: "E/R Diagram", class: "img-responsive center-block") %>
+</div>
+
+<p>
+My database structure consists of 6 tables: Users, Books, Comments,Reviews, Categories and Catalogues.
+</p>
+
+<p>
+Users table is for authentication and authorization. The app needs to verify every visitor's identity before granting further permission to interact with the database.
+</p>
+
+<p>
+Books table is for storing books of users. The Books table has 1 to many relationship with Comments table and 1 to 1 relationship with Review table.
+</p>
+
+<p>
+Reviews and Comments tables are for storing users' reviews and comments. They are weak entities. Reviews and Comments tables have weak relationship with Books table. When a book gets destroyed, all the review and comments get destroyed as well.
+</p>
+
+<p>
+Categories table is for organizing books to make it easier for searching. Categories table has many to many relationship with Books table as a book might have many categories and likewise a category contains many books.
+</p>
+
+<p>
+Catalogues table is associative entity that depicts many to many relationship between Books and Categories tables.
+</p>
+
+
+

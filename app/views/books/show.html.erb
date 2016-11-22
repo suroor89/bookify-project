@@ -34,7 +34,7 @@
     <h2 class="page-header">Book Review</h2>
     <% if @book.review.present? %>
       <div>
-        <%= @book.user.firstname %> reviewed this book on <%= @book.review.created_at.to_s %>
+        <%= @book.user.firstname %> reviewed this book on <%= @book.review.created_at.to_s(:long) %>
       </div>
     <div class="media">
       <div class="media-left">
@@ -55,9 +55,60 @@
       </div>
     </div>
     <% else %>
-      The book has not been reviewed yet.
+      The book has not been reviewed by the owner yet.
       <%= link_to "New Review", new_book_review_path(@book) %>
     <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 mg-bo">
+    <h2 class="page-header">Book Comments</h2>
+      <ul class="media-list comment-list">
+      <% if @book.comments.any? %>
+        <% @book.comments.each do |comment| %>
+        <li class="media comment">
+          <div class="media-left">
+            <%= gravatar_for(comment.user, size: '50', class: "media-object") %>
+          </div>
+          <div class="media-body">
+            <h5><%= comment.user.firstname %></h5>
+            <small class="text-muted"><%= comment.created_at.to_s(:long) %></small>
+            <p>
+              <%= comment.content %>
+            </p>
+          </div>
+        </li>
+        <% end %>
+      <% else %>
+        <li class="no-comment">
+          Book has not had any comment yet.
+        </li>
+      <% end %>
+      </ul>
+  </div>
+
+  <div class="col-md-8">
+    <% if logged_in? %>
+    <ul id="comment-errors">
+    </ul>
+    <div id="comment-form">
+      <%= form_for(Comment.new, url: book_comments_path(@book), remote: true) do |f| %>
+        <legend>Your Comment</legend>
+        <%= hidden_field_tag :user_id, current_user.id %>
+        <div class="form-group">
+          <%= f.label :content, 'Comment', class: 'control-label' %>
+          <%= f.text_area :content, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "Post Comment", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+    <% else %>
+    <div><%= link_to "Log in", login_path %> and drop a comment?</div>
+  <% end %>
   </div>
 </div>
 

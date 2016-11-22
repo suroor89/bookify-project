@@ -1,0 +1,13 @@
+<li class="media comment">
+  <div class="media-left">
+    <%= gravatar_for(comment.user, size: '50', class: "media-object") %>
+  </div>
+  <div class="media-body">
+    <h5><%= comment.user.firstname %></h5>
+    <small class="text-muted"><%= comment.created_at.to_s(:long) %></small>
+    <p>
+    <%= comment.content %>
+    </p>
+  </div>
+</li>
+

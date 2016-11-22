@@ -11,18 +11,14 @@ class BooksController < ApplicationController
     @categories = Category.categories_from_user(@user).distinct
   end
 
-  # GET /books/1
-  # GET /books/1.json
   def show
   end
 
-  # GET /books/new
   def new
     @book = @user.books.build
     @categories = Category.all
   end
 
-  # GET /books/1/edit
   def edit
     @categories = Category.all
   end
@@ -33,11 +29,13 @@ class BooksController < ApplicationController
         flash[:success] = "Book was successfully created."
         redirect_to user_books_path(@user)
       else
+        @categories = Category.all
         render 'new'
       end
   end
 
   def update
+    params[:product][:category_ids] ||= []
     if @book.update(book_params)
       flash[:success] = "Book was successfully updated."
       redirect_to user_book_url([@user, @book])

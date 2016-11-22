@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
   has_many :books, dependent: :destroy
+  has_many :comments
 
   attr_accessor :remember_token
 

@@ -1,2 +1,55 @@
-<h1>StaticPages#about</h1>
-<p>Find me in app/views/static_pages/about.html.erb</p>
+<h1>How to Use the App</h1>
+
+<p>
+Welcome to Bookify, your future reading list!
+</p>
+
+<p>
+As a visitor, you have limited access to the app. You can browse people's reading list. You can search for the book you are interested in. However, you cannot create your own reading list without an account. You cannot drop a review on the book you like. And you cannot make a comment on other people's books. If you want to try out all the things mentioned above, you need to register an account. Do you want to give it a shot? <%= link_to "Register", signup_path %>
+</p>
+
+<p>
+This app allows people create their reading list and drop a review on the book they finished. You can also comment on other people's books and reviews.
+</p>
+
+<h2>Create New Book</h2>
+
+<p>
+After you registered an account, you will be redirected to your own page. Of course, It's empty for now. You need to populate your list with books. Click on "New Book" link to create new book in your list. You need to do the followings:
+
+<ul>
+  <li>Go to Amazon.com</li>
+  <li>Search for the book you like</li>
+  <li>Obtain Amazon ID from the link on address bar (following ../dp/). Some of example for Amazon IDs: 055357342X or 0547928211</li>
+  <li>Obtain book's description on Amazon or write it by yourself</li>
+  <li>Fill out the form and hit submit</li>
+</ul>
+
+The app will automagically fetch the book image.
+</p>
+
+<h2>Be a Critic</h2>
+
+<p>
+You need to log into the app to drop a review.
+</p>
+
+<p>
+After you finished the book, you might want to express your opinion about the book or simply want to take some notes. You can do that by dropping a review on the book. Click on individual book and look for "Write review". To make it easier for other users to see how good or bad a book is, the app provides a simple rating system for you to consider. The scale is from 1 to 5 stars.
+</p>
+
+<p>Please note that a user cannot write review on other user's books. Everyone has their own playground. If you want to say something on other people's book section. You might want to make a comment.</p>
+
+<h2>Make a Comment</h2>
+
+<p>
+You need to log into the app to make a comment.
+</p>
+
+<p>
+If you want to make a comment on other people's reviews and books, you can do that by going to their pages and looking for "Make a comment".
+</p>
+
+<p>
+Be nice and have fun.
+</p>

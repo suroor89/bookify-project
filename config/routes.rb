@@ -7,12 +7,12 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
+  get '/signup' => 'users#new'
 
   get '/home' => 'static_pages#home'
   get '/app_architecture' => 'static_pages#app_architecture'
   get '/about' => 'static_pages#about'
-  get '/contact' => 'static_pages#contact'
-  get '/signup' => 'users#new'
+  get '/use_cases' => 'static_pages#use_cases'
 
   resources :users do
     resources :books
@@ -20,6 +20,10 @@ Rails.application.routes.draw do
 
   resources :books do
     resources :reviews
+  end
+
+  resources :books do
+    resources :comments
   end
 
 end

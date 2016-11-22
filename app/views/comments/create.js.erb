@@ -1,0 +1,7 @@
+if ($('.comment-list .no-comment').length) {
+  $('.comment-list .no-comment').remove();
+}
+
+$('.comment-list').append('<%= j(render @comment) %>');
+document.getElementById('new_comment').reset();
+
