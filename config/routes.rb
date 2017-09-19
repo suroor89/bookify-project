@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 
-  root 'static_pages#home'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
@@ -26,5 +25,6 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  root 'static_pages#home'
 end
 
